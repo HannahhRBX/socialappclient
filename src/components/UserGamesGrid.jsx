@@ -14,7 +14,7 @@ const UserGamesGrid = ({ games }) => {
             if (games[i].gameDetails != null) {
                 gameCards.push(<GameCard key={games[i].gameDetails.id} game={games[i].gameDetails} />);
             } else {
-                gameCards.push(<GameCard key={`placeholder-${i}`} game={{name: '', background_image:'http://localhost:5000/images/Plus.png'}} />);
+                gameCards.push(<GameCard key={`placeholder-${i}`} game={{name: '', background_image:'https://socialappserver-hpis.onrender.com/images/Plus.png'}} />);
             }
         }
     }

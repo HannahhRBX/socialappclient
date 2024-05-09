@@ -89,7 +89,7 @@ const Games = () => {
             newUserGames[selectedGame] = [currentGame.id, selectedPlatforms];
             
             // Must contain bearer token in header
-            const response = await fetch("http://localhost:5000/games/updategames", {
+            const response = await fetch("https://socialappserver-hpis.onrender.com/games/updategames", {
                 method: "POST",
                 headers: { "Content-Type": "application/json","Authorization":"Bearer "+user.token },
                 body: JSON.stringify({
@@ -144,7 +144,7 @@ const Games = () => {
                                         e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
                                     }}>
                                     <div style={{width:'50px', height:'50px', backgroundColor: 'rgba(0, 0, 0, 0)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                                        <img src={`http://localhost:5000/images/Icon${platform.platform.name}.png`} alt='Platform Thumbnail' style={{opacity: 0.5, transition: 'opacity 0.3s' }} />
+                                        <img src={`https://socialappserver-hpis.onrender.com/images/Icon${platform.platform.name}.png`} alt='Platform Thumbnail' style={{opacity: 0.5, transition: 'opacity 0.3s' }} />
                                     </div>
                                     <h1 className="text-2xl font-bold" style={{fontSize:'22px', marginBottom:'-5px', opacity: 0.5, transition: 'opacity 0.3s'}}>{platform.platform.name}</h1>
                                 </div>
@@ -190,7 +190,7 @@ const Games = () => {
                                         </div>
                                     ) : (
                                         <div style={{width:'50px', height:'50px', backgroundColor: 'rgba(0, 0, 0, 0)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                                            <img src={`http://localhost:5000/images/Plus.png`} alt='Platform Thumbnail' style={{opacity: selectedGame == index ? 1 : 0.5, transition: 'opacity 0.3s' }} />
+                                            <img src={`https://socialappserver-hpis.onrender.com/images/Plus.png`} alt='Platform Thumbnail' style={{opacity: selectedGame == index ? 1 : 0.5, transition: 'opacity 0.3s' }} />
                                         </div>
                                     )}
                                         

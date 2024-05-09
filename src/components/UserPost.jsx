@@ -35,7 +35,7 @@ const UserPost = (props) => {
     
     // Fetch user data from server
     const GetUser = async () => {
-        const response = await fetch(`http://localhost:5000/users/${UserId}`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         });
@@ -52,7 +52,7 @@ const UserPost = (props) => {
     // Send like to post
     const patchLike = async () => {
         console.log(LoggedInUser.user._id)
-        const response = await fetch(`http://localhost:5000/posts/${_id}/like`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/posts/${_id}/like`, {
           method: "PATCH",
           headers: {
             "Authorization":"Bearer "+LoggedInUser.token,
@@ -73,7 +73,7 @@ const UserPost = (props) => {
 
     // Delete post from server
     const deletePost = async (data) => {
-        const response = await fetch(`http://localhost:5000/posts/${_id}/delete`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/posts/${_id}/delete`, {
             method: 'DELETE',
             headers: {
                 "Authorization":"Bearer "+LoggedInUser.token,
@@ -95,7 +95,7 @@ const UserPost = (props) => {
         
         
         // Send data to register route in server
-        const response = await fetch(`http://localhost:5000/posts/${_id}/comment`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/posts/${_id}/comment`, {
           method: "POST",
           headers: { "Content-Type": "application/json","Authorization":"Bearer "+LoggedInUser.token },
           body: JSON.stringify({
@@ -122,15 +122,15 @@ const UserPost = (props) => {
         <div className="feed bg-white rounded-xl shadow-lg" style={{width:'100%', height:'auto', marginTop:'25px', paddingTop:'15px',paddingBottom:'20px'}}>
                 {UserId === LoggedInUser.user._id && (
                     <div style={{ position: 'relative' }}>
-                        <img src="http://localhost:5000/images/Delete.png" alt="Delete" onClick={deletePost} style={{ position: 'absolute', top: '-2px', right: '13px', width: '20px', height: '21px' }} className="hover:opacity-75 cursor-pointer" />
+                        <img src="https://socialappserver-hpis.onrender.com/images/Delete.png" alt="Delete" onClick={deletePost} style={{ position: 'absolute', top: '-2px', right: '13px', width: '20px', height: '21px' }} className="hover:opacity-75 cursor-pointer" />
                     </div>
                 )}
                 <div className="" style={{height:'22%',paddingLeft:'15px',paddingRight:'15px',paddingBottom:'5px'}}>
                     <div style={{ display: 'flex', alignItems: 'flex-start' }}>
-                        <div className="avatar rounded-full bg-gray-200 shadow-lg flex items-center justify-center" style={{ height:'60px', width:'60px', border: '1px solid grey', backgroundImage: `url(http://localhost:5000/images/${profilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Avatar Image">
+                        <div className="avatar rounded-full bg-gray-200 shadow-lg flex items-center justify-center" style={{ height:'60px', width:'60px', border: '1px solid grey', backgroundImage: `url(https://socialappserver-hpis.onrender.com/images/${profilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Avatar Image">
                         </div>
                         <div style={{ marginLeft: '10px' }}>
-                            <a href={`http://localhost:3000/users/${UserId}`}>
+                            <a href={`https://socialappserver-hpis.onrender.com:3000/users/${UserId}`}>
                                 <h2 className="text-2xl font-bold" style={{fontSize:'20px', marginBottom:'-5px'}}>{firstName} {lastName}</h2>
                             </a>
                             <p>{formatDistanceToNow(new Date(createdAt))} ago</p>
@@ -141,7 +141,7 @@ const UserPost = (props) => {
                 {Image &&
                 <div style={{width:'100%', height:'350px', display: 'flex', justifyContent:'center',backgroundColor: 'black'}}>
                     <div className="postImage flex items-center justify-center" style={{ height:'auto', width:'100%' }} aria-label="Post Image">
-                        <img src={`http://localhost:5000/images/${Image}`} style={{ width: '100%', maxHeight: '350px', objectFit: 'contain' }} alt="Post" />
+                        <img src={`https://socialappserver-hpis.onrender.com/images/${Image}`} style={{ width: '100%', maxHeight: '350px', objectFit: 'contain' }} alt="Post" />
                     </div>
                 </div>
                 }
@@ -168,7 +168,7 @@ const UserPost = (props) => {
                 <form onSubmit={handleSubmit(postComment)} style={{height:'100%',width:'100%'}}>
                     <div style={{width:'100%', justifyContent:'center',alignItems:'center',display:'flex'}}>
                         <div style={{width:'10%', height:'30%', margin:'15px', marginRight:'5px', display: 'flex', justifyContent:'center'}}>
-                            <div className="avatar rounded-full bg-gray-200 shadow-lg flex items-center justify-center" style={{ height:'55px', width:'55px', border: '1px solid grey', backgroundImage: `url(http://localhost:5000/images/${LoggedInUser.user.ProfilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Avatar Image">
+                            <div className="avatar rounded-full bg-gray-200 shadow-lg flex items-center justify-center" style={{ height:'55px', width:'55px', border: '1px solid grey', backgroundImage: `url(https://socialappserver-hpis.onrender.com/images/${LoggedInUser.user.ProfilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Avatar Image">
                             </div>
                         </div>
                         <div className="" style={{width:'100%', justifyContent:'center',alignItems:'center',display:'flex', position: 'relative'}} >

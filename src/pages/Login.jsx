@@ -22,7 +22,7 @@ const LoginForm = () => {
   }, [user]);
   // Login post request
   const onSubmit = async (data) => {
-    const response = await fetch("http://localhost:5000/login", {
+    const response = await fetch("https://socialappserver-hpis.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -45,7 +45,7 @@ const LoginForm = () => {
       
       <div className="bg-[#ffffff] p-8 rounded shadow-2xl w-96">
         <div className="text-center items-center mb-4" style={{ justifyContent:'center', display:'flex', width: '100%' }}>
-          <img className="mb-4" src="http://localhost:5000/images/logo2.png" alt="Logo" style={{ width: 'auto', marginBottom:'-10px', marginTop:'-10px', height: '100px' }} />
+          <img className="mb-4" src="https://socialappserver-hpis.onrender.com/images/logo2.png" alt="Logo" style={{ width: 'auto', marginBottom:'-10px', marginTop:'-10px', height: '100px' }} />
         </div>
         
         <form onSubmit={handleSubmit(onSubmit)}>

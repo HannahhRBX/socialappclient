@@ -54,7 +54,7 @@ const EditProfile = () => {
                 formData.append(key, data[key]);
             }
         }
-        const response = await fetch("http://localhost:5000/editProfile", {
+        const response = await fetch("https://socialappserver-hpis.onrender.com/editProfile", {
             method: "POST",
             headers: { "Authorization":"Bearer "+user.token },
             body: formData,
@@ -84,7 +84,7 @@ const EditProfile = () => {
                         <BackButton buttonText="Back" URL={"/"} style={{marginTop:'-6px', fontWeight: '400',  border: '1px solid #D6D6D6', borderRadius: '10px',width:'90px', height:'40px', color: '#3D3D3D',  textShadow: '0px 0 white, 0 0px white, 0px 0 white, 0 -0px white' }} backgroundColor={'#FBFBFB'} hoverColor={'#F5F5F5'} />
 
                         
-                        <div className="avatar w-40 h-40 rounded-full bg-gray-200 shadow-lg border border-gray-200 flex items-center justify-center" style={{ border: '2px solid grey', backgroundImage: `url(http://localhost:5000/images/${UserData.ProfilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Avatar Image">
+                        <div className="avatar w-40 h-40 rounded-full bg-gray-200 shadow-lg border border-gray-200 flex items-center justify-center" style={{ border: '2px solid grey', backgroundImage: `url(https://socialappserver-hpis.onrender.com/images/${UserData.ProfilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Avatar Image">
                         </div>
                         {/*Form with columns for even input field widths*/}
                         <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 gap-4" style={{width:'80%'}}>

@@ -4,7 +4,7 @@ import { setGames, setUserGames } from "../redux/gamesSlice";
 export const GetLibraryPage = async (page, dispatch, navigate) => {
     try {
         
-        const response = await fetch(`http://localhost:5000/games/page/${page}`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/games/page/${page}`, {
             method: "GET",
         });
         if (response.ok) {
@@ -40,7 +40,7 @@ export const SearchGame = async ({search, dispatch, navigate}) => {
     try {
         
         const searchTerms = search.SearchTerms
-        const response = await fetch(`http://localhost:5000/games/search/${searchTerms}`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/games/search/${searchTerms}`, {
             method: "GET",
         });
         
@@ -78,7 +78,7 @@ export const SearchGame = async ({search, dispatch, navigate}) => {
 export const GetGameDetails = async (gameId, navigate) => {
     try {
         
-        const response = await fetch(`http://localhost:5000/games/gamedetails/${gameId}`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/games/gamedetails/${gameId}`, {
             method: "GET",
         });
         if (response.ok) {

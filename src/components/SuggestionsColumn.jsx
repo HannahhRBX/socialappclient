@@ -22,7 +22,7 @@ const UserSuggestions = ({ UserData }) => {
 
     // Get matching users from server
     const GetMatchingUsers = async () => {
-        const response = await fetch(`http://localhost:5000/matchusers/${LoggedInUser.user._id}`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/matchusers/${LoggedInUser.user._id}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         });
@@ -58,13 +58,13 @@ const UserSuggestions = ({ UserData }) => {
                     }else{
                         return (
                             // Navigate to user profile with hover then click
-                            <div onClick={() => window.location.href=`http://localhost:3000/users/${match._id}`} style={{ borderRadius:'10px', textDecoration: 'none', cursor: 'pointer' }} className="hover:bg-[#eaeaea]">
+                            <div onClick={() => window.location.href=`https://socialappserver-hpis.onrender.com:3000/users/${match._id}`} style={{ borderRadius:'10px', textDecoration: 'none', cursor: 'pointer' }} className="hover:bg-[#eaeaea]">
                                 <div key={index} style={{ display: 'flex', alignItems: 'center', padding: '5px', transition: 'background-color 0.3s ease' }}>
                                     <h1 className="text-2xl font-bold" style={{ paddingRight: '12px', lineHeight: '1.1', fontSize: '15px' }}>
                                         {index+1}
                                     </h1>
                                     <div style={{ width: '40px', height: '40px'}}>
-                                        <img className="shadow-md rounded-full" src={`http://localhost:5000/images/${match.ProfilePicture}`} alt="Profile Picture" style={{ minWidth: '40px', minHeight: '40px', objectFit: 'cover' }} />
+                                        <img className="shadow-md rounded-full" src={`https://socialappserver-hpis.onrender.com/images/${match.ProfilePicture}`} alt="Profile Picture" style={{ minWidth: '40px', minHeight: '40px', objectFit: 'cover' }} />
                                     </div>
                                     <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '15px', marginRight: '15px' }}>
                                         <h1 className="text-2xl font-bold" style={{ lineHeight: '1.1', fontSize: '14px' }}>

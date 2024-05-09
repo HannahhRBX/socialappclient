@@ -35,7 +35,7 @@ const FeedColumn = ({ posts }) => {
             console.log(pair[0]+ ', ' + pair[1]); 
         }
         // Send data to post route in server
-        const response = await fetch("http://localhost:5000/post", {
+        const response = await fetch("https://socialappserver-hpis.onrender.com/post", {
           method: "POST",
           headers: { "Authorization":"Bearer "+LoggedInUser.token },
           body: formData,
@@ -67,7 +67,7 @@ const FeedColumn = ({ posts }) => {
                     <form onSubmit={handleSubmit(postStatus)} style={{height:'180px',width:'100%'}}>
                         <div style={{width:'100%', height:'100%', justifyContent:'center',marginTop:'-10px', alignItems:'center',display:'flex'}}>
                             <div style={{width:'10%', height:'75%', margin:'15px', marginRight:'5px', display: 'flex', justifyContent:'center'}}>
-                                <div className="avatar rounded-full bg-gray-200 shadow-lg flex items-center justify-center" style={{ height:'55px', width:'55px', border: '1px solid grey', backgroundImage: `url(http://localhost:5000/images/${LoggedInUser.user.ProfilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Avatar Image">
+                                <div className="avatar rounded-full bg-gray-200 shadow-lg flex items-center justify-center" style={{ height:'55px', width:'55px', border: '1px solid grey', backgroundImage: `url(https://socialappserver-hpis.onrender.com/images/${LoggedInUser.user.ProfilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Avatar Image">
                                 </div>
                             </div>
                             <div className="" style={{width:'100%', height:'75%', justifyContent:'center',alignItems:'center',display:'flex', position: 'relative'}} >

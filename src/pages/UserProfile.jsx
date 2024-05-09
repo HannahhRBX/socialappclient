@@ -22,7 +22,7 @@ const UserProfile = () => {
 
     // Get user data from server
     const getUser = async () => {
-        const response = await fetch(`http://localhost:5000/users/${UserId}`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         });
@@ -39,7 +39,7 @@ const UserProfile = () => {
 
     // Get all user posts from server
     const getUserPosts = async () => {
-        const response = await fetch(`http://localhost:5000/users/${UserId}/posts`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}/posts`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
             

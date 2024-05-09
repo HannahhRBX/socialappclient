@@ -25,7 +25,7 @@ const PostSearch = () => {
 
     // Get all posts and users with keyword
     const getSearchPosts = async () => {
-        const response = await fetch(`http://localhost:5000/search/${keyword}`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/search/${keyword}`, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
         });

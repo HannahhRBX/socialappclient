@@ -24,7 +24,7 @@ const GameSearchBar = ({ searchGame }) => {
                         <input 
                             type="image" 
                             id="ClickSearchGame"
-                            src="http://localhost:5000/images/Search.png" 
+                            src="https://socialappserver-hpis.onrender.com/images/Search.png" 
                             onMouseEnter={() => setIsHoveredSearch(true)}
                             onMouseLeave={() => setIsHoveredSearch(false)}
                             className="hover:opacity-85 cursor-pointer"

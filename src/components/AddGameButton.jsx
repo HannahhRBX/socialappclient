@@ -41,7 +41,7 @@ const AddGameButton = ({ buttonText, game, style, backgroundColor, hoverColor })
             if (gameIndex !== -1) {
                 newUserGames[gameIndex] = { id: null, platforms: [] };
             }
-            const response = await fetch("http://localhost:5000/games/updategames", {
+            const response = await fetch("https://socialappserver-hpis.onrender.com/games/updategames", {
                 method: "POST",
                 headers: { "Content-Type": "application/json","Authorization":"Bearer "+user.token },
                 body: JSON.stringify({

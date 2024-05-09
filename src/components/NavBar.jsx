@@ -74,7 +74,7 @@ const NavBar = () => {
                 {/*Logo div*/}
                 <div style={{ flex: 1,display: 'flex', justifyContent: 'flex-start' }}>
                     <Link to="/">
-                    <img className="hover:opacity-85 cursor-pointer" src="http://localhost:5000/images/logo.png" alt="Logo" style={{ width: 'auto', paddingLeft:'20px', height: '30px', cursor: 'pointer' }} />
+                    <img className="hover:opacity-85 cursor-pointer" src="https://socialappserver-hpis.onrender.com/images/logo.png" alt="Logo" style={{ width: 'auto', paddingLeft:'20px', height: '30px', cursor: 'pointer' }} />
                     </Link>
                 </div>
                 {/*Flex div to seperate logo, search bar and logout button into three columns*/}
@@ -89,7 +89,7 @@ const NavBar = () => {
                             
                             <input 
                             type="image" 
-                            src="http://localhost:5000/images/Search.png" 
+                            src="https://socialappserver-hpis.onrender.com/images/Search.png" 
                             onMouseEnter={() => setIsHoveredSearch(true)}
                             onMouseLeave={() => setIsHoveredSearch(false)}
                             className="hover:opacity-85 cursor-pointer"
@@ -107,7 +107,7 @@ const NavBar = () => {
                     </div>
                 </div>
                 <button style={{ width:'40px', height:'40px', flex: 1, display: 'flex', justifyContent: 'flex-end' }} >
-                    <img className="hover:opacity-85 cursor-pointer" style={{width:'40px',height:'40px', marginRight:'15px', alignItems:'center',justifyContent:'center'}} src="http://localhost:5000/images/Hamburger.png" alt="Menu" onClick={() => setIsOpen(!isOpen)} />
+                    <img className="hover:opacity-85 cursor-pointer" style={{width:'40px',height:'40px', marginRight:'15px', alignItems:'center',justifyContent:'center'}} src="https://socialappserver-hpis.onrender.com/images/Hamburger.png" alt="Menu" onClick={() => setIsOpen(!isOpen)} />
                 </button>
             </div>
         </nav>

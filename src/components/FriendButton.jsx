@@ -29,7 +29,7 @@ const FriendButton = ({ buttonText, hoverText, refreshProfile, userId, friendId,
 
     // Send friend patch request to server
     const sendFriend = async () => {
-        const response = await fetch(`http://localhost:5000/users/${userId}/addfriend/${friendId}`, {
+        const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${userId}/addfriend/${friendId}`, {
             method: "PATCH",
             headers: { "Authorization":"Bearer "+token,
                        "Content-Type": "application/json" },
