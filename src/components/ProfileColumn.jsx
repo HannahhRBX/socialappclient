@@ -62,7 +62,7 @@ const ProfileColumn = ({ UserData }) => {
             {/*User profile avatar image wiith auto width scaling*/}
             <div className="avatar w-40 h-40 rounded-full bg-gray-200 shadow-lg border border-gray-200 flex items-center justify-center" style={{ border: '2px solid grey', backgroundImage: `url(https://socialappserver-hpis.onrender.com/images/${UserData.ProfilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Avatar Image"> 
             </div>
-            <a href={`https://socialappserver-hpis.onrender.com/users/${UserData._id}`}>
+            <a href={`https://grand-sunshine-1957f1.netlify.app/users/${UserData._id}`}>
                 <h2 className="text-2xl font-bold mb-2">{UserData.FirstName} {UserData.LastName}</h2>    
             </a>
             <p className="text-gray-500">{UserData.Bio}</p>
