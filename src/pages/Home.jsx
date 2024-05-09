@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import {setPosts} from '../redux/postSlice';
 import NavBar from "../components/NavBar";
@@ -18,25 +18,26 @@ const Home = () => {
     const navigate = useNavigate();
     const UserData = user.user;
 
-    const getAllPosts = async () => {
-        const response = await fetch("https://socialappserver-hpis.onrender.com/posts", {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-            
-        });
-        if (response.ok) {
-            let data = await response.json();
-            dispatch(setPosts({ posts: data }));
-        } else {
-            // Navigate to error page if response is not ok
-            navigate(`/error?type=${response.status}&message=${response.statusText}.`);
-        }
-        
-    };
+    
     useEffect(() => {
         // Get post and feed data from server
+        const getAllPosts = async () => {
+            const response = await fetch("https://socialappserver-hpis.onrender.com/posts", {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+                
+            });
+            if (response.ok) {
+                let data = await response.json();
+                dispatch(setPosts({ posts: data }));
+            } else {
+                // Navigate to error page if response is not ok
+                navigate(`/error?type=${response.status}&message=${response.statusText}.`);
+            }
+            
+        };
         getAllPosts();
-    }, []); // Only run once when page loads
+    }, [dispatch,navigate]); // Only run once when page loads
 
     return (
         <div className="home" style={{height:'auto'}}>

@@ -10,56 +10,54 @@ import { useNavigate } from 'react-router-dom';
 
 // User Profile Page
 const UserProfile = () => {
-    const LoggedInUser = useSelector((state) => state.user);
-    const UserData = LoggedInUser.user;
     const posts = useSelector((state) => state.posts)
     const { UserId } = useParams();
-    const [errorMessage, setErrorMessage] = useState(null);
 
     const [user, setUser] = useState(null);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // Get user data from server
-    const getUser = async () => {
-        const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        });
-        if (response.ok) {
-            // If response okay set user useState data
-            const data = await response.json();
-            setUser(data)
-        } else {
-            // Navigate to error page if response is not ok
-            navigate(`/error?type=${response.status}&message=${response.statusText}.`);
-        }
-        
-    };
+    
 
-    // Get all user posts from server
-    const getUserPosts = async () => {
-        const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}/posts`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-            
-        });
-        if (response.ok) {
-            // If response okay set posts to user redux state
-            let data = await response.json();
-            dispatch(setPosts({ posts: data }));
-        } else {
-            // Navigate to error page if response is not ok
-            navigate(`/error?type=${response.status}&message=${response.statusText}.`);
-        }
-        
-    };
+    
+    // Get post and feed data from server
     useEffect(() => {
-        // Get post and feed data from server
-        console.log("SDA")
+        // Get all user posts from server
+        const getUserPosts = async () => {
+            const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}/posts`, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+                
+            });
+            if (response.ok) {
+                // If response okay set posts to user redux state
+                let data = await response.json();
+                dispatch(setPosts({ posts: data }));
+            } else {
+                // Navigate to error page if response is not ok
+                navigate(`/error?type=${response.status}&message=${response.statusText}.`);
+            }
+            
+        };
+        // Get user data from server
+        const getUser = async () => {
+            const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}`, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            });
+            if (response.ok) {
+                // If response okay set user useState data
+                const data = await response.json();
+                setUser(data)
+            } else {
+                // Navigate to error page if response is not ok
+                navigate(`/error?type=${response.status}&message=${response.statusText}.`);
+            }
+            
+        };
         getUser();
         getUserPosts();
-    }, []); // Only run once when page loads
+    }, [UserId,dispatch,navigate]); // Only run once when page loads
     
 
     return (

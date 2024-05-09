@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { updateProfile } from "../redux/userSlice";
-import gamesSlice from '../redux/gamesSlice';
 
 // Button to add or remove friends
 const FriendButton = ({ buttonText, hoverText, refreshProfile, userId, friendId, token, style, backgroundColor, hoverColor }) => {

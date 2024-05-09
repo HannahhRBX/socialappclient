@@ -1,15 +1,14 @@
 
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "../redux/userSlice";
 import SubmitButton from "../components/SubmitButton";
 import NavButton from "../components/NavButton";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const RegisterForm = () => {
-  const { user } = useSelector((state) => state.user);
   const form = useForm({ mode: "onChange" });
   const navigate = useNavigate();
   const dispatch = useDispatch();

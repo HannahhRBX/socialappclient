@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentGame } from '../redux/gamesSlice';
 import { updateProfile } from "../redux/userSlice";
@@ -9,7 +8,6 @@ const AddGameButton = ({ buttonText, game, style, backgroundColor, hoverColor })
     const user = useSelector((state) => state.user);
     const userGames = user.user.Games;
     const [isHovered, setIsHovered] = useState(false);
-    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     
@@ -34,7 +32,7 @@ const AddGameButton = ({ buttonText, game, style, backgroundColor, hoverColor })
     const UpdateGame = async () => {
         
         
-        if (buttonText == "Remove Game") {
+        if (buttonText === "Remove Game") {
             let newUserGames = [...userGames];
             const gameIndex = newUserGames.findIndex(userGame => userGame[0] === game.id);
 

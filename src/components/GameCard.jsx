@@ -1,12 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { formatDistanceToNow } from 'date-fns';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import { FaCommentDots } from 'react-icons/fa';
-import { useSelector, useDispatch } from "react-redux";
-import { setPost,setPosts } from "../redux/postSlice";
-import PostComments from './Comments';
-import { useForm } from "react-hook-form";
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from "react-redux";
 import AddGameButton from './AddGameButton';
 
 // User post element
@@ -16,16 +8,10 @@ const GameCard = (props) => {
 
     // Destructure post properties
     
-    const {id, name, background_image, platforms, genres} = props.game;
+    const {id, name, background_image } = props.game;
 
     // Check if post is liked by logged in user
-    
-    //console.log(props)
-    // Initiate redux dispatch and form
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const form = useForm({ mode: "onChange" });
-    const { register, handleSubmit, control, setValue, formState: { errors } } = form;
+
     const gameIds = UserData.Games.map(game => game[0]);
     // Fetch user data from server
     //console.log(gameIds);

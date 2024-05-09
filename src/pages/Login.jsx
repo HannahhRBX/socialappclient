@@ -3,12 +3,11 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/userSlice";
-import setPosts from "../redux/postSlice";
 import SubmitButton from "../components/SubmitButton";
 import NavButton from "../components/NavButton";
 import React, { useState, useEffect } from 'react';
 
-{/*Login Page*/}
+// Login Page
 const LoginForm = () => {
   const { user } = useSelector((state) => state.user);
   const form = useForm({ mode: "onChange" });

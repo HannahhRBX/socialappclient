@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 
 // Button with navigation URL parameter on click for importing into pages
 const GameSearchBar = ({ searchGame }) => {
-    const [isHoveredSearch, setIsHoveredSearch] = useState(false);
     const form = useForm({ mode: "onChange" });
-    const { register, handleSubmit, control, setValue, formState: { errors } } = form;
+    const { register, handleSubmit } = form;
 
     const onSubmit = (data) => {
         searchGame(data);
@@ -25,8 +22,6 @@ const GameSearchBar = ({ searchGame }) => {
                             type="image" 
                             id="ClickSearchGame"
                             src="https://socialappserver-hpis.onrender.com/images/Search.png" 
-                            onMouseEnter={() => setIsHoveredSearch(true)}
-                            onMouseLeave={() => setIsHoveredSearch(false)}
                             className="hover:opacity-85 cursor-pointer"
                             style={{ 
                                 width: 'auto', 

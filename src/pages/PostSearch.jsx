@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from 'react-router-dom';
 import {setPosts} from '../redux/postSlice';
@@ -13,7 +13,6 @@ const PostSearch = () => {
 
     const user = useSelector((state) => state.user);
     const posts = useSelector((state) => state.posts);
-    const [errorMessage, setErrorMessage] = useState(null);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const UserData = user.user;
@@ -24,27 +23,28 @@ const PostSearch = () => {
     const keyword = searchParams.get('keyword');
 
     // Get all posts and users with keyword
-    const getSearchPosts = async () => {
-        const response = await fetch(`https://socialappserver-hpis.onrender.com/search/${keyword}`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        });
-        if (response.ok) {
-            // If okay set all search posts to user state
-            let data = await response.json();
-            dispatch(setPosts({ posts: data }));
-        } else {
-            // Navigate to error page if response is not ok
-            navigate(`/error?type=${response.status}&message=${response.statusText}.`);
-        }
-        
-    };
+    
 
     
     useEffect(() => {
         // Get post and feed data from server
+        const getSearchPosts = async () => {
+            const response = await fetch(`https://socialappserver-hpis.onrender.com/search/${keyword}`, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            });
+            if (response.ok) {
+                // If okay set all search posts to user state
+                let data = await response.json();
+                dispatch(setPosts({ posts: data }));
+            } else {
+                // Navigate to error page if response is not ok
+                navigate(`/error?type=${response.status}&message=${response.statusText}.`);
+            }
+            
+        };
         getSearchPosts();
-    }, [keyword]); // Only run once when page loads
+    }, [keyword,navigate,dispatch]); // Only run once when page loads
 
     return (
         <div className="home" style={{height:'auto'}}>

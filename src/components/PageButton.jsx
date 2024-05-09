@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 // Button with navigation URL parameter on click for importing into pages
 const PageButton = ({ buttonText, onClick, style, backgroundColor, hoverColor }) => {
     const [isHovered, setIsHovered] = useState(false);
-    const navigate = useNavigate();
 
     const defaultStyle = { 
         width:'160px',
@@ -13,7 +11,6 @@ const PageButton = ({ buttonText, onClick, style, backgroundColor, hoverColor })
         color: '#3D3D3D',
         padding: '8px', 
         fontWeight: '600', 
-        borderRadius: '50px',
         fontSize: '1.1rem',
         display: 'flex',
         marginTop:'6px',

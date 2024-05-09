@@ -15,7 +15,7 @@ const UserPost = (props) => {
     const UserData = LoggedInUser.user;
 
     // Destructure post properties
-    const { _id, UserId, BodyText, Image, Comments, Likes, createdAt, updatedAt } = props.post;
+    const { _id, UserId, BodyText, Image, Comments, Likes, createdAt } = props.post;
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [profilePicture, setProfilePicture] = useState("");
@@ -31,24 +31,10 @@ const UserPost = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const form = useForm({ mode: "onChange" });
-    const { register, handleSubmit, control, setValue, formState: { errors } } = form;
+    const { register, handleSubmit, setValue } = form;
     
     // Fetch user data from server
-    const GetUser = async () => {
-        const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        });
-        if (response.ok) {
-            const data = await response.json();
-            setFirstName(data.FirstName);
-            setLastName(data.LastName);
-            setProfilePicture(data.ProfilePicture);
-        } else {
-            // Navigate to error page if response is not ok
-            navigate(`/error?type=${response.status}&message=${response.statusText}.`);
-        }
-    };
+    
     // Send like to post
     const patchLike = async () => {
         console.log(LoggedInUser.user._id)
@@ -90,9 +76,7 @@ const UserPost = (props) => {
     };
 
     // Send comment to post
-    const postComment = async (data) => {
-        const formData = new FormData();
-        
+    const postComment = async (data) => { 
         
         // Send data to register route in server
         const response = await fetch(`https://socialappserver-hpis.onrender.com/posts/${_id}/comment`, {
@@ -115,8 +99,23 @@ const UserPost = (props) => {
 
     // Get user data on load
     useEffect(() => {
+        const GetUser = async () => {
+            const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}`, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setFirstName(data.FirstName);
+                setLastName(data.LastName);
+                setProfilePicture(data.ProfilePicture);
+            } else {
+                // Navigate to error page if response is not ok
+                navigate(`/error?type=${response.status}&message=${response.statusText}.`);
+            }
+        };
         GetUser();
-    }, []); // Only run once when page loads
+    }, [navigate, UserId]); // Only run once when page loads
 
     return (
         <div className="feed bg-white rounded-xl shadow-lg" style={{width:'100%', height:'auto', marginTop:'25px', paddingTop:'15px',paddingBottom:'20px'}}>

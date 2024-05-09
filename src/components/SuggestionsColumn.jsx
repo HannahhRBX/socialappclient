@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { GetGameDetailsForUserGames } from '../functions/GameLibrary';
 import { useLocation } from 'react-router-dom';
@@ -20,26 +20,27 @@ const UserSuggestions = ({ UserData }) => {
         title = `${UserData.FirstName}'s Games`;
     }
 
-    // Get matching users from server
-    const GetMatchingUsers = async () => {
-        const response = await fetch(`https://socialappserver-hpis.onrender.com/matchusers/${LoggedInUser.user._id}`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        });
-        if (response.ok) {
-            // Update matches in redux store
-            const updatedMatches = await response.json();
-            dispatch(updateMatches({ matches: updatedMatches }));
-        }else{
-            const updatedMatches = await response.json();
-            console.log(updatedMatches.message)
-        }
-    };
-
     useEffect(() => {
+        // Get matching users from server
+        const GetMatchingUsers = async () => {
+            const response = await fetch(`https://socialappserver-hpis.onrender.com/matchusers/${LoggedInUser.user._id}`, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            });
+            if (response.ok) {
+                // Update matches in redux store
+                const updatedMatches = await response.json();
+                dispatch(updateMatches({ matches: updatedMatches }));
+            }else{
+                const updatedMatches = await response.json();
+                console.log(updatedMatches.message)
+            }
+        };
+    
         GetGameDetailsForUserGames(userGames, dispatch);
         GetMatchingUsers();
-    }, []);
+    }, [dispatch, userGames, LoggedInUser.user._id]);
+    
     return (
         <div className="rightcolumn w-1/4" style={{ marginLeft:'4px', display: 'flex', flexDirection: 'column' }}>
             <div className="suggested bg-white p-6 rounded-xl ml-4 shadow-lg" style={{marginBottom: '30px',height:'350px',position:'sticky', top: 20, margin: '10px'}}>
@@ -64,7 +65,7 @@ const UserSuggestions = ({ UserData }) => {
                                         {index+1}
                                     </h1>
                                     <div style={{ width: '40px', height: '40px'}}>
-                                        <img className="shadow-md rounded-full" src={`https://socialappserver-hpis.onrender.com/images/${match.ProfilePicture}`} alt="Profile Picture" style={{ minWidth: '40px', minHeight: '40px', objectFit: 'cover' }} />
+                                        <img className="shadow-md rounded-full" src={`https://socialappserver-hpis.onrender.com/images/${match.ProfilePicture}`} alt="User Profile" style={{ minWidth: '40px', minHeight: '40px', objectFit: 'cover' }} />
                                     </div>
                                     <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '15px', marginRight: '15px' }}>
                                         <h1 className="text-2xl font-bold" style={{ lineHeight: '1.1', fontSize: '14px' }}>

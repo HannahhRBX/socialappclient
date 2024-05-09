@@ -19,21 +19,7 @@ const UserComment = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
-    const GetUser = async () => {
-        const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}`, {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-        });
-        if (response.ok) {
-            const data = await response.json();
-            setFirstName(data.FirstName);
-            setLastName(data.LastName);
-            setProfilePicture(data.ProfilePicture);
-        } else {
-            // Navigate to error page if response is not ok
-            navigate(`/error?type=${response.status}&message=${response.statusText}.`);
-        }
-    };
+    
     
     // Delete comment from post
     const deleteComment = async (data) => {
@@ -55,8 +41,23 @@ const UserComment = (props) => {
     
     // Get user data on load
     useEffect(() => {
+        const GetUser = async () => {
+            const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}`, {
+                method: "GET",
+                headers: { "Content-Type": "application/json" },
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setFirstName(data.FirstName);
+                setLastName(data.LastName);
+                setProfilePicture(data.ProfilePicture);
+            } else {
+                // Navigate to error page if response is not ok
+                navigate(`/error?type=${response.status}&message=${response.statusText}.`);
+            }
+        };
         GetUser();
-    }, []); // Only run once when page loads
+    }, [navigate,UserId]); // Only run once when page loads
 
     return (
         <div className="" style={{height:'22%',paddingLeft:'15px',paddingRight:'15px',paddingBottom:'5px', paddingTop:'5px'}}>
@@ -65,7 +66,7 @@ const UserComment = (props) => {
                         <img src="https://socialappserver-hpis.onrender.com/images/Delete.png" alt="Delete" onClick={deleteComment} style={{ position: 'absolute', top: '5px', right: '13px', width: '17px', height: '18px' }} className="hover:opacity-75 cursor-pointer" />
                     </div>
                 )}
-                <div style={{ display: 'flex', alignItems: 'flex-start', alignItems:'center' }}>
+                <div style={{ display: 'flex', alignItems:'center' }}>
                         <div className="avatar rounded-full bg-gray-200 shadow-lg flex" style={{ justifyContent:'center', alignContent:'center', alignItems: 'center', height:'40px', width:'40px', border: '1px solid grey', backgroundImage: `url(https://socialappserver-hpis.onrender.com/images/${profilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center', display: 'flex' }} aria-label="Avatar Image">
                         </div>
                         <div style={{ marginLeft: '10px' }}>

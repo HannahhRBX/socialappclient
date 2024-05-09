@@ -1,26 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useForm } from "react-hook-form";
-import { useSelector, useDispatch } from "react-redux";
 import GameCard from './GameCard';
-import UploadButton from './UploadButton';
-import SubmitButton from './SubmitButton';
-import { useParams, useLocation, useNavigate } from "react-router-dom";
-import { setGames } from "../redux/gamesSlice";
 
 // Grid component for displaying fetched games
 const GamesGrid = ({ games }) => {
-
-    const LoggedInUser = useSelector((state) => state.user);
-    //const CurrentGames = useSelector((state) => state.games);
-    const form = useForm({ mode: "onChange" });
-    const { register, handleSubmit, control, setValue, formState: { errors } } = form;
-    const { UserId } = useParams();
-    const dispatch = useDispatch();
-    const location = useLocation();
-    const navigate = useNavigate();
-    
-    
-        
 
     return (
         

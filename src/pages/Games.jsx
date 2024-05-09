@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import NavBar from "../components/NavBar";
 import { useNavigate } from 'react-router-dom';
@@ -14,6 +14,9 @@ import { GetLibraryPage,SearchGame, GetGameDetailsForUserGames } from '../functi
 
 // Games Page
 const Games = () => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const user = useSelector((state) => state.user);
     const userGames = user.user.Games;
     const games = useSelector((state) => state.games);
@@ -32,7 +35,7 @@ const Games = () => {
         } else {
             setPage(page);
         }
-    }, [location]);
+    }, [location, navigate]);
     
     const changePage = (change) => () => {
         setPage(Number(page) + change);
@@ -43,12 +46,7 @@ const Games = () => {
     const [loading, setLoading] = useState(true);
     const [selectedPlatforms, setSelectedPlatforms] = useState([]);
     const [selectedGame, setSelectedGame] = useState(null);
-    const [refreshKey, setRefreshKey] = useState(0);
     
-    
-    const UserData = user.user;
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
     
     // Game search bar function from URL search params
     const searchGame = async (search) => {
@@ -67,7 +65,7 @@ const Games = () => {
         
         setLoading(false);
         console.log("Reloaded",user,games);
-    }, [refreshKey,user,page]); 
+    }, [user,page, dispatch,games,navigate,userGames]); 
 
     useEffect(() => {
         // Make sure that game retrieval has finished before checking for current game
@@ -80,7 +78,7 @@ const Games = () => {
                 setShowModal(false);
             }
         }
-    }, [games, loading]); // Run when page loads and whenever 'games' or 'loading' changes
+    }, [games, loading, currentGame ]); // Run when page loads and whenever 'games' or 'loading' changes
     
     // Function to handle game submission for updating user games
     const handleGameSubmit = async () => {
@@ -106,7 +104,7 @@ const Games = () => {
                 
             } else {
                 // If not send error message
-                const err = await response.json();
+                
                 navigate(`/error?type=${response.status}&message=${response.statusText}.`);
             }   
         }catch{
@@ -129,7 +127,7 @@ const Games = () => {
                             
                             {/* Displays all available platforms fro game */}
                             {currentPlatforms && currentPlatforms.map((platform) => (
-                                <div style={{backgroundColor:'transparent', margin: '20px', paddingTop:'20px', paddingBottom:'20px', borderRadius: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',cursor:'pointer', backgroundColor: selectedPlatforms.includes(platform.platform.name) ? 'rgba(0, 0, 0, 0.1)' : 'transparent'}} 
+                                <div style={{ margin: '20px', paddingTop:'20px', paddingBottom:'20px', borderRadius: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',cursor:'pointer', backgroundColor: selectedPlatforms.includes(platform.platform.name) ? 'rgba(0, 0, 0, 0.1)' : 'transparent'}} 
                                     onMouseOver={(e) => {e.currentTarget.firstChild.firstChild.style.opacity = 1; e.currentTarget.lastChild.style.opacity = 1; e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';}} 
                                     onMouseOut={(e) => {if (!selectedPlatforms.includes(platform.platform.name)) {e.currentTarget.firstChild.firstChild.style.opacity = 0.5; e.currentTarget.lastChild.style.opacity = 0.5; e.currentTarget.style.backgroundColor = 'transparent';}}}
                                     onClick={(e) => {
@@ -156,7 +154,7 @@ const Games = () => {
                             {userGames.map((game, index) => (
                                 <div 
                                     style={{
-                                        backgroundColor:'transparent', 
+                                        
                                         margin: '20px', 
                                         paddingTop:'20px', 
                                         paddingBottom:'20px', 
@@ -166,7 +164,7 @@ const Games = () => {
                                         justifyContent: 'center', 
                                         alignItems: 'center',
                                         cursor:'pointer', 
-                                        backgroundColor: selectedGame == index ? 'rgba(0, 0, 0, 0.1)' : 'transparent'
+                                        backgroundColor: selectedGame === index ? 'rgba(0, 0, 0, 0.1)' : 'transparent'
                                     }} 
                                     onMouseOver={(e) => {
                                         e.currentTarget.firstChild.firstChild.style.opacity = 1; 
@@ -186,11 +184,11 @@ const Games = () => {
                                     {/* Displays game icon if occupied or plus symbol if empty */}
                                     { games && games.games && games.userGames && games.userGames[index] && games.userGames[index].gameDetails != null ? (
                                         <div style={{ backgroundColor: 'rgba(0, 0, 0, 0)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                                            <img src={games.userGames[index].gameDetails.background_image} alt='Platform Thumbnail' style={{opacity: selectedGame == index ? 1 : 0.5, transition: 'opacity 0.3s' }} />
+                                            <img src={games.userGames[index].gameDetails.background_image} alt='Platform Thumbnail' style={{opacity: selectedGame === index ? 1 : 0.5, transition: 'opacity 0.3s' }} />
                                         </div>
                                     ) : (
                                         <div style={{width:'50px', height:'50px', backgroundColor: 'rgba(0, 0, 0, 0)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                                            <img src={`https://socialappserver-hpis.onrender.com/images/Plus.png`} alt='Platform Thumbnail' style={{opacity: selectedGame == index ? 1 : 0.5, transition: 'opacity 0.3s' }} />
+                                            <img src={`https://socialappserver-hpis.onrender.com/images/Plus.png`} alt='Platform Thumbnail' style={{opacity: selectedGame === index ? 1 : 0.5, transition: 'opacity 0.3s' }} />
                                         </div>
                                     )}
                                         
@@ -207,13 +205,13 @@ const Games = () => {
                                     <h1 className="text-2xl font-bold" style={{fontSize:'20px'}}>Most Played</h1>
                                 </div>
                                 <div style={{backgroundColor:'transparent', margin: '20px', marginTop:'-6px', paddingBottom:'20px', borderRadius: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}} >
-                                    <h1 className="text-2xl font-bold" style={{fontSize:'20px'}}></h1>
+                                    <h1 className="text-2xl font-bold" style={{fontSize:'20px'}}> </h1>
                                 </div>
                                 <div style={{backgroundColor:'transparent', margin: '20px', marginTop:'-6px', paddingBottom:'20px', borderRadius: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}} >
-                                    <h1 className="text-2xl font-bold" style={{fontSize:'20px'}}></h1>
+                                    <h1 className="text-2xl font-bold" style={{fontSize:'20px'}}> </h1>
                                 </div>
                                 <div style={{backgroundColor:'transparent', margin: '20px', marginTop:'-6px', paddingBottom:'20px', borderRadius: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}} >
-                                    <h1 className="text-2xl font-bold" style={{fontSize:'20px'}}></h1>
+                                    <h1 className="text-2xl font-bold" style={{fontSize:'20px'}}> </h1>
                                 </div>
                                 <div style={{backgroundColor:'transparent', margin: '20px', marginTop:'-6px', paddingBottom:'20px', borderRadius: '10px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}} >
                                     <h1 className="text-2xl font-bold" style={{fontSize:'20px'}}>Least Played</h1>

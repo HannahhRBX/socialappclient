@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import PreviousRouteContext from "../PreviousRouteContext";
 import { useContext } from "react";
 
-{/*Error Page*/}
+// Error Page
 const ErrorPage = () => {
   
   // Displays error message and type from URL parameters

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from "react-redux";
-import { useNavigate } from 'react-router-dom';
 import NavButton from './NavButton';
 import FriendButton from './FriendButton';
 
@@ -9,7 +8,6 @@ const ProfileColumn = ({ UserData }) => {
     
     const LoggedInUser = useSelector((state) => state.user);
     const [friendButtonClicked, setFriendButtonClicked] = useState(false);
-    const navigate = useNavigate();
     const buttonStyle = { 
         marginTop:'25px', 
         border: '1px solid #D6D6D6', 
@@ -23,7 +21,7 @@ const ProfileColumn = ({ UserData }) => {
     const userId = LoggedInUser.user._id;
     const friendId = UserData._id;
     const token = LoggedInUser.token;
-
+    console.log(friendButtonClicked);
     // Refresh friend button on click
     const refreshProfile = () => {
         setFriendButtonClicked(prevState => !prevState);

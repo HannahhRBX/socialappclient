@@ -1,38 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logout } from "../redux/userSlice";
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import DropDownButton from './DropDownButton';
 
-{/*Top navigation bar*/}
+// Top navigation bar
 const NavBar = () => {
-  const [isHoveredSearch, setIsHoveredSearch] = useState(false);
   
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const form = useForm({ mode: "onChange" });
-  const { register, handleSubmit, setValue, formState: { errors } } = form;
+  const { register, handleSubmit } = form;
 
   const onSubmit = async (data) => {
     navigate(`/search?keyword=${data.Search}`);
   };
-
-  const [isScreenWidthSmall, setIsScreenWidthSmall] = useState(window.innerWidth < 1280);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsScreenWidthSmall(window.innerWidth < 1280);
-    };
-  
-    window.addEventListener('resize', handleResize);
-  
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
     const logoutClick = async () => {
         dispatch(logout());
@@ -90,8 +74,6 @@ const NavBar = () => {
                             <input 
                             type="image" 
                             src="https://socialappserver-hpis.onrender.com/images/Search.png" 
-                            onMouseEnter={() => setIsHoveredSearch(true)}
-                            onMouseLeave={() => setIsHoveredSearch(false)}
                             className="hover:opacity-85 cursor-pointer"
                             style={{ 
                                 width: 'auto', 

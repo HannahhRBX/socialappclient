@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useSelector, useDispatch } from "react-redux";
 import UserPost from './UserPost';
 import UploadButton from './UploadButton';
 import SubmitButton from './SubmitButton';
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { setPosts } from "../redux/postSlice";
 
 // Button component with submit function for completing forms
@@ -12,11 +11,9 @@ const FeedColumn = ({ posts }) => {
 
     const LoggedInUser = useSelector((state) => state.user);
     const form = useForm({ mode: "onChange" });
-    const { register, handleSubmit, control, setValue, formState: { errors } } = form;
-    const { UserId } = useParams();
+    const { register, handleSubmit, control, setValue } = form;
     const dispatch = useDispatch();
     const location = useLocation();
-    const navigate = useNavigate();
 
     // Create a new post and send to server
     const postStatus = async (data) => {

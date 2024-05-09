@@ -14,7 +14,6 @@ const ChangePassword = () => {
     const form = useForm({ mode: "onChange" });
     const dispatch = useDispatch();
 
-    const [isHoveredPassword, setIsHoveredPassword] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
     const UserData = user.user;
     const { register, handleSubmit } = form;

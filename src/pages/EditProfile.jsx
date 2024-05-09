@@ -9,8 +9,7 @@ import BackButton from "../components/BackButton";
 import SubmitButton from "../components/SubmitButton";
 import NavButton from '../components/NavButton';
 
-// https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg
-//discord https://static.vecteezy.com/system/resources/previews/006/892/625/original/discord-logo-icon-editorial-free-vector.jpg
+// Edit profile page
 const EditProfile = () => {
     const user = useSelector((state) => state.user);
     const navigate = useNavigate();
@@ -25,6 +24,7 @@ const EditProfile = () => {
     const [bio, setBio] = useState("");
     const [discord, setDiscord] = useState("");
     const [profilePicture, setProfilePicture] = useState("");
+    console.log(profilePicture.length);
 
     useEffect(() => {
         setFirstName(UserData.FirstName);
