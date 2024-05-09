@@ -100,7 +100,7 @@ const UserPost = (props) => {
     // Get user data on load
     useEffect(() => {
         const GetUser = async () => {
-            const response = await fetch(`http:/localhost/users/${UserId}`, {
+            const response = await fetch(`https://grand-sunshine-1957f1.netlify.app/users/${UserId}`, {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
             });
@@ -129,7 +129,7 @@ const UserPost = (props) => {
                         <div className="avatar rounded-full bg-gray-200 shadow-lg flex items-center justify-center" style={{ height:'60px', width:'60px', border: '1px solid grey', backgroundImage: `url(https://socialappserver-hpis.onrender.com/images/${profilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center' }} aria-label="Avatar Image">
                         </div>
                         <div style={{ marginLeft: '10px' }}>
-                            <a href={`http:/localhost/users/${UserId}`}>
+                            <a href={`https://grand-sunshine-1957f1.netlify.app/users/${UserId}`}>
                                 <h2 className="text-2xl font-bold" style={{fontSize:'20px', marginBottom:'-5px'}}>{firstName} {lastName}</h2>
                             </a>
                             <p>{formatDistanceToNow(new Date(createdAt))} ago</p>
