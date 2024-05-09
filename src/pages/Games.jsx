@@ -11,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 import PageButton from '../components/PageButton';
 import ClickButton from '../components/ClickButton';
 import { GetLibraryPage,SearchGame, GetGameDetailsForUserGames } from '../functions/GameLibrary';
-
+/* eslint-disable */
 // Games Page
 const Games = () => {
 
@@ -58,7 +58,7 @@ const Games = () => {
     };
     
     // Reload page when refresh key changes and whenever 'user' or 'page' changes
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
     useEffect(() => {
         
         GetLibraryPage(page, dispatch, navigate);
@@ -68,7 +68,7 @@ const Games = () => {
         console.log("Reloaded",user,games);
     }, [user,page]); 
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
     useEffect(() => {
         // Make sure that game retrieval has finished before checking for current game
         if (!loading) {
@@ -257,5 +257,5 @@ const Games = () => {
     }
     
 };
-
+/* eslint-enable */
 export default Games;
