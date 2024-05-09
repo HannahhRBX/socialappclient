@@ -59,7 +59,7 @@ const UserSuggestions = ({ UserData }) => {
                     }else{
                         return (
                             // Navigate to user profile with hover then click
-                            <div onClick={() => window.location.href=`https://socialappserver-hpis.onrender.com:3000/users/${match._id}`} style={{ borderRadius:'10px', textDecoration: 'none', cursor: 'pointer' }} className="hover:bg-[#eaeaea]">
+                            <div onClick={() => window.location.href=`https://socialappserver-hpis.onrender.com/users/${match._id}`} style={{ borderRadius:'10px', textDecoration: 'none', cursor: 'pointer' }} className="hover:bg-[#eaeaea]">
                                 <div key={index} style={{ display: 'flex', alignItems: 'center', padding: '5px', transition: 'background-color 0.3s ease' }}>
                                     <h1 className="text-2xl font-bold" style={{ paddingRight: '12px', lineHeight: '1.1', fontSize: '15px' }}>
                                         {index+1}

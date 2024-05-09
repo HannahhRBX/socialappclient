@@ -70,7 +70,7 @@ const UserComment = (props) => {
                         <div className="avatar rounded-full bg-gray-200 shadow-lg flex" style={{ justifyContent:'center', alignContent:'center', alignItems: 'center', height:'40px', width:'40px', border: '1px solid grey', backgroundImage: `url(https://socialappserver-hpis.onrender.com/images/${profilePicture})`, backgroundSize: 'cover', backgroundPosition: 'center', display: 'flex' }} aria-label="Avatar Image">
                         </div>
                         <div style={{ marginLeft: '10px' }}>
-                            <a href={`https://socialappserver-hpis.onrender.com:3000/users/${UserId}`}>
+                            <a href={`https://socialappserver-hpis.onrender.com/users/${UserId}`}>
                                 <h2 className="text-2xl font-bold" style={{fontSize:'15px', marginBottom:'-5px'}}>{firstName} {lastName}</h2>
                             </a>
                             <p style={{fontSize:'15px'}}>{formatDistanceToNow(new Date(createdAt))} ago</p>
