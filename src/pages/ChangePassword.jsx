@@ -50,7 +50,7 @@ const ChangePassword = () => {
                 {/*Change password form background*/}
                 <div className="mt-6 justify-center" style={{ width:'600px' }}>
                     
-                    <div className="shadow-lg profile bg-white p-6 rounded-xl mr-4 flex flex-col items-center justify-center" style={{width:'100%', height: '100%'}}>
+                    <div className="shadow-lg profile bg-white p-6 rounded-xl mr-4 flex flex-col items-center justify-center" style={{width:'100%', height: '100%', borderRadius: '18px'}}>
                         {/*Import BackButton to navigate back to editProfile*/}
                         <BackButton buttonText="Back" URL={"/editProfile"} style={{marginTop:'-6px', fontWeight: '400',  border: '1px solid #D6D6D6', borderRadius: '10px',width:'90px', height:'40px', color: '#3D3D3D',  textShadow: '0px 0 white, 0 0px white, 0px 0 white, 0 -0px white' }} backgroundColor={'#FBFBFB'} hoverColor={'#F5F5F5'} />
                         {/*User profile avatar picture with auto scale*/}
@@ -87,7 +87,7 @@ const ChangePassword = () => {
                             {errorMessage && <h2 className="text-md font-bold text-center" style={{color: '#ff2121', marginBottom: '-18px'}}>{errorMessage}</h2>}
                             <div className="col-span-1 mb-1 flex items-center justify-center">
                                 {/*Import SubmitButton to submit form*/}
-                                <SubmitButton buttonText="Submit" style={{ border: '1px solid #D6D6D6', borderRadius: '10px',width:'200px', textShadow: '0px 0 #171717, 0 0px #171717, 0px 0 #171717, 0 0px #171717' }} backgroundColor={'#171717'} hoverColor={'#000000'} />
+                                <SubmitButton buttonText="Submit" style={{ border: '1px solid #D6D6D6', borderRadius: '14px',width:'200px', textShadow: '0px 0 #171717, 0 0px #171717, 0px 0 #171717, 0 0px #171717' }} backgroundColor={'#186bf2'} hoverColor={'#095de7'} />
                             </div>
                             
                         </form>

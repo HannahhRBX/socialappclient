@@ -80,7 +80,7 @@ const EditProfile = () => {
             <div className="background h-screen bg-[#f1f2f7] min-h-screen flex items-center justify-center bg-cover bg-center">
                 {/*Form background*/}
                 <div className="content flex mt-14 justify-center" style={{ width:'650px'}}>
-                    <div className="shadow-lg profile bg-white p-6 rounded-xl mr-4 flex flex-col items-center justify-center" style={{width:'100%', height: '100%'}}>
+                    <div className="shadow-lg profile bg-white p-6 rounded-xl mr-4 flex flex-col items-center justify-center" style={{width:'100%', height: '100%', borderRadius: '18px'}}>
                         <BackButton buttonText="Back" URL={"/"} style={{marginTop:'-6px', fontWeight: '400',  border: '1px solid #D6D6D6', borderRadius: '10px',width:'90px', height:'40px', color: '#3D3D3D',  textShadow: '0px 0 white, 0 0px white, 0px 0 white, 0 -0px white' }} backgroundColor={'#FBFBFB'} hoverColor={'#F5F5F5'} />
 
                         
@@ -142,7 +142,7 @@ const EditProfile = () => {
                             {errors.LastName && <ErrorMessage message={"Invalid Last Name."}/>}
                             {errorMessage && <ErrorMessage message={errorMessage} />}
                             <div className="col-span-2 mb-1 flex items-center justify-center">
-                                <SubmitButton buttonText="Update" style={{ border: '1px solid #D6D6D6', borderRadius: '10px',width:'200px', textShadow: '0px 0 #171717, 0 0px #171717, 0px 0 #171717, 0 0px #171717' }} backgroundColor={'#171717'} hoverColor={'#000000'} />
+                                <SubmitButton buttonText="Update" style={{ border: '1px solid #D6D6D6', borderRadius: '14px',width:'200px', textShadow: '0px 0 #171717, 0 0px #171717, 0px 0 #171717, 0 0px #171717' }} backgroundColor={'#186bf2'} hoverColor={'#095de7'} />
                             </div>
                             
                         </form>

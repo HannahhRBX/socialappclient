@@ -54,7 +54,7 @@ const RegisterForm = () => {
     // Website background image
     <div className="bg-[#c9d0ff] min-h-screen flex items-center justify-center bg-cover bg-center" style={{backgroundImage: 'url("https://img.freepik.com/premium-vector/abstract-smooth-blur-purple-blue-color-gradient-background-website-banner-graphic-design_120819-893.jpg")'}}>
       {/*Form background*/}
-      <div className="bg-[#ffffff] p-8 rounded shadow-2xl" style={{width:'720px'}}>
+      <div className="bg-[#ffffff] p-8 rounded shadow-2xl" style={{width:'720px', borderRadius: '18px'}}>
         <h2 className="text-4xl font-bold mb-6 text-center" >Register</h2>
         {/*Form for entering Registration data*/}
         <form onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-2 gap-4">
@@ -122,7 +122,7 @@ const RegisterForm = () => {
           </div>
 
           <div className="col-span-2 mb-1 flex items-center justify-center">
-            <SubmitButton buttonText="Create Account" style={{ border: '1px solid #D6D6D6', borderRadius: '10px',width:'170px', textShadow: '0px 0 #171717, 0 0px #171717, 0px 0 #171717, 0 0px #171717' }} backgroundColor={'#171717'} hoverColor={'#000000'} />
+            <SubmitButton buttonText="Create Account" style={{ border: '1px solid #D6D6D6', borderRadius: '14px',width:'170px', textShadow: '0px 0 #171717, 0 0px #171717, 0px 0 #171717, 0 0px #171717' }} backgroundColor={'#186bf2'} hoverColor={'#095de7'} />
           </div>
         </form>
         <NavButton buttonText="Back" URL={"/login"} style={{fontWeight: '400',  border: '1px solid #D6D6D6', borderRadius: '10px',width:'90px', height:'30px', color: '#3D3D3D',  textShadow: '0px 0 white, 0 0px white, 0px 0 white, 0 0px white' }} backgroundColor={'#FBFBFB'} hoverColor={'#F5F5F5'} />

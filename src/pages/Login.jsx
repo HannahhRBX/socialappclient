@@ -42,7 +42,7 @@ const LoginForm = () => {
   return (
     <div className="bg-[#c9d0ff] min-h-screen flex flex-col items-center justify-center bg-cover bg-center" style={{backgroundImage: 'url("https://img.freepik.com/premium-vector/abstract-smooth-blur-purple-blue-color-gradient-background-website-banner-graphic-design_120819-893.jpg")'}}>
       
-      <div className="bg-[#ffffff] p-8 rounded shadow-2xl w-96">
+      <div className="bg-[#ffffff] p-8 rounded shadow-2xl w-96" style={{borderRadius: '18px'}}>
         <div className="text-center items-center mb-4" style={{ justifyContent:'center', display:'flex', width: '100%' }}>
           <img className="mb-4" src="https://socialappserver-hpis.onrender.com/images/logo2.png" alt="Logo" style={{ width: 'auto', marginBottom:'-10px', marginTop:'-10px', height: '100px' }} />
         </div>
@@ -68,7 +68,7 @@ const LoginForm = () => {
           { (errors.email || errors.password || errorMessage ) && <h2 className="mb-2 text-md font-bold text-center" style={{color: '#ff2121'}}>Invalid email or password.</h2>}
           
           <div className="mb-1 flex items-center justify-center">
-          <SubmitButton buttonText="Login" style={{ border: '1px solid #D6D6D6', borderRadius: '10px',width:'170px', textShadow: '0px 0 #171717, 0 0px #171717, 0px 0 #171717, 0 0px #171717' }} backgroundColor={'#171717'} hoverColor={'#000000'} />
+            <SubmitButton buttonText="Login" style={{ border: '1px solid #D6D6D6', borderRadius: '14px',width:'170px', textShadow: '0px 0 #171717, 0 0px #171717, 0px 0 #171717, 0 0px #171717' }} backgroundColor={'#186bf2'} hoverColor={'#095de7'} />
             
           </div>
         </form>
