@@ -8,6 +8,7 @@ import ErrorMessage from '../components/ErrorMessage';
 import BackButton from "../components/BackButton";
 import SubmitButton from "../components/SubmitButton";
 import NavButton from '../components/NavButton';
+import Authenticate from "../functions/Authenticate";
 
 // Edit profile page
 const EditProfile = () => {
@@ -71,7 +72,8 @@ const EditProfile = () => {
             setErrorMessage(err.message);
         }
     };
-
+    Authenticate();
+    
     return (
         <div className="home">
             {/*Place navbar at top of page*/}

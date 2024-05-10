@@ -6,6 +6,7 @@ import ProfileColumn from '../components/ProfileColumn';
 import SuggestionsColumn from '../components/SuggestionsColumn';
 import FeedColumn from '../components/FeedColumn';
 import { useNavigate } from 'react-router-dom';
+import Authenticate from "../functions/Authenticate";
 
 // https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg
 //discord https://static.vecteezy.com/system/resources/previews/006/892/625/original/discord-logo-icon-editorial-free-vector.jpg
@@ -38,6 +39,7 @@ const Home = () => {
         };
         getAllPosts();
     }, [dispatch,navigate]); // Only run once when page loads
+    Authenticate();
 
     return (
         <div className="home" style={{height:'auto'}}>

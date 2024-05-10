@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { updateProfile } from "../redux/userSlice";
 import BackButton from "../components/BackButton";
 import SubmitButton from "../components/SubmitButton";
+import Authenticate from "../functions/Authenticate";
 
 // Change password page
 const ChangePassword = () => {
@@ -40,7 +41,8 @@ const ChangePassword = () => {
             setErrorMessage(err.message);
         }   
     };
-
+    Authenticate();
+    
     return (
         <div className="home">
             {/*Place navbat at top of page*/}

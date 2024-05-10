@@ -7,6 +7,7 @@ import ProfileColumn from '../components/ProfileColumn';
 import SuggestionsColumn from '../components/SuggestionsColumn';
 import FeedColumn from '../components/FeedColumn';
 import { useNavigate } from 'react-router-dom';
+import Authenticate from "../functions/Authenticate";
 
 // Search Page
 const PostSearch = () => {
@@ -45,6 +46,7 @@ const PostSearch = () => {
         };
         getSearchPosts();
     }, [keyword,navigate,dispatch]); // Only run once when page loads
+    Authenticate();
 
     return (
         <div className="home" style={{height:'auto'}}>

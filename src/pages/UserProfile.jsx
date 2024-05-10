@@ -7,6 +7,8 @@ import ProfileColumn from '../components/ProfileColumn';
 import SuggestionsColumn from '../components/SuggestionsColumn';
 import FeedColumn from '../components/FeedColumn';
 import { useNavigate } from 'react-router-dom';
+import Authenticate from "../functions/Authenticate";
+
 
 // User Profile Page
 const UserProfile = () => {
@@ -58,6 +60,7 @@ const UserProfile = () => {
         getUser();
         getUserPosts();
     }, [UserId,dispatch,navigate]); // Only run once when page loads
+    Authenticate();
     
 
     return (

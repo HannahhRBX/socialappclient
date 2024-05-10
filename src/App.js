@@ -1,7 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useLocation, useNavigate, Route, Routes } from "react-router-dom";
-import { useSelector } from "react-redux";
-import PreviousRouteContext from './PreviousRouteContext';
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
 import Login from "./pages/Login";
@@ -13,28 +10,11 @@ import PostSearch from "./pages/PostSearch";
 import ErrorPage from "./pages/Error";
 import Games from "./pages/Games";
 
-// Layout component for user authentication
+// Main App Component
 /* eslint-disable */
 const Layout = () => {
   
-  const { user } = useSelector((state) => state.user);
-  const navigate = useNavigate();
-  const location = useLocation();
-  const [previousLocation, setPreviousLocation] = useState();
-  const currentLocation = useRef(location.pathname);
-
-  useEffect(() => {
-    if (currentLocation.current !== location.pathname) {
-      setPreviousLocation(currentLocation.current);
-      currentLocation.current = location.pathname;
-    }
-    if (user.token == null && location.pathname !== '/login') {
-      navigate("/login");
-    }
-  }, [user]);
-
   return (
-    <PreviousRouteContext.Provider value={previousLocation}>
       <div>
         <div className="pages">
           {/*Website routes for setting up page navigation*/}
@@ -52,7 +32,7 @@ const Layout = () => {
           </Routes>
         </div>
       </div>
-    </PreviousRouteContext.Provider>
+    
   );
 };
 /* eslint-enable */

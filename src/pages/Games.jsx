@@ -11,6 +11,7 @@ import { useLocation } from 'react-router-dom';
 import PageButton from '../components/PageButton';
 import ClickButton from '../components/ClickButton';
 import { GetLibraryPage,SearchGame, GetGameDetailsForUserGames } from '../functions/GameLibrary';
+import Authenticate from "../functions/Authenticate";
 /* eslint-disable */
 // Games Page
 const Games = () => {
@@ -113,6 +114,8 @@ const Games = () => {
             
         }
     };
+    Authenticate();
+    
     if (!loading) {
         return (
             <div className="home" style={{height:'auto'}}>
