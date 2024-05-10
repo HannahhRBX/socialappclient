@@ -14,6 +14,7 @@ import ErrorPage from "./pages/Error";
 import Games from "./pages/Games";
 
 // Layout component for user authentication
+/* eslint-disable */
 const Layout = () => {
   
   const { user } = useSelector((state) => state.user);
@@ -28,9 +29,9 @@ const Layout = () => {
       currentLocation.current = location.pathname;
     }
     if (user.token == null && location.pathname !== '/login') {
-      //navigate("/login");
+      navigate("/login");
     }
-  }, [user, navigate, location]);
+  }, [user]);
 
   return (
     <PreviousRouteContext.Provider value={previousLocation}>
@@ -54,6 +55,6 @@ const Layout = () => {
     </PreviousRouteContext.Provider>
   );
 };
-
+/* eslint-enable */
 export default Layout;
 
