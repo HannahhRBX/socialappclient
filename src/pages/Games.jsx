@@ -80,7 +80,7 @@ const Games = () => {
                 setShowModal(false);
             }
         }
-    }, []); // Run when page loads and whenever 'games' or 'loading' changes
+    }, [games,loading]); // Run when page loads and whenever 'games' or 'loading' changes
     
     // Function to handle game submission for updating user games
     const handleGameSubmit = async () => {
