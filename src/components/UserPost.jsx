@@ -100,7 +100,7 @@ const UserPost = (props) => {
     // Get user data on load
     useEffect(() => {
         const GetUser = async () => {
-            const response = await fetch(`https://grand-sunshine-1957f1.netlify.app/users/${UserId}`, {
+            const response = await fetch(`https://socialappserver-hpis.onrender.com/users/${UserId}`, {
                 method: "GET",
                 headers: { "Content-Type": "application/json" },
             });
